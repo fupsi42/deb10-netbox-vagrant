@@ -6,12 +6,12 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = "deb10-netbox-demo"
 
   config.vm.network :forwarded_port, guest: 80, host: 8080, id: 'http'
-
+  config.vm.network "public_network"
   config.vm.synced_folder "./config_files", "/vagrant"
 
 #Update VM resources below as needed
   config.vm.provider :virtualbox do |vb|
-    vb.name = "Deb10-Netbox-Demo"
+    vb.name = "Deb10-Demo"
     vb.memory = 2048
     vb.cpus = 1
     vb.customize ["modifyvm", :id, "--ostype", "Debian_64"]
